@@ -1,0 +1,17 @@
+%h2 Log In
+
+- form_tag session_path do
+  %p
+    %label{:for => "email"} Email:
+    %input{:type => "text", :name => "email", :value => @email}
+
+  %p
+    %label{:for => "password"} Password:
+    %input{:type => "password", :name => "password", :value => nil}
+
+  %p
+    %label{:for => "remember_me"} Remember me?
+    %input{:type => "checkbox", :name => "remember_me", :value => 1, :checked => @remember_me}
+
+  %p
+    %input{:type => "submit", :value => "Log in"}

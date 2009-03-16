@@ -1,0 +1,10 @@
+- if logged_in?
+  = "Welcome, #{current_user.name}"
+  = link_to "Dashboard", current_user
+  = '(<a href="/logout" title="Log out of your account">log out</a>)'
+- else
+  Not logged in
+  |
+  %a{:href => "/signup", :title => "Create an account"} Register
+  |
+  %a{:href => "/login", :title => "Log into your account"} Log in

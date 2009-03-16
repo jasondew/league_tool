@@ -1,0 +1,78 @@
+!dark_gray  = #111
+!gray       = #333
+!light_gray = #999
+
+@import reset.sass
+
+body
+  :background = !gray
+  :text-align center
+
+h1
+  :font-family georgia
+  :font-size 4em
+
+h2
+  :font-family georgia
+  :font-size 2.75em
+  :padding-bottom 0.25em
+
+h3
+  :font-family georgia
+  :font-size 1.5em
+  :padding-bottom 0.25em
+
+p
+  :padding-bottom 1em
+  :line-height 1.25em
+
+table
+  :border = 2px solid !dark_gray
+
+  th
+    :font-weight bold
+    :background = !gray
+    :color white
+
+  td, th
+    :border = 1px solid !light_gray
+    :padding 2px
+
+#header
+  :border-bottom = 2px solid !dark_gray
+
+#status_bar
+  :text-align right
+
+#content
+  :background white
+  :width 760px
+  :margin 0 auto
+  :padding 0
+  :text-align left
+
+#features
+  :width 200px
+  :margin 10px
+  :border = 1px solid !dark_gray
+  :float left
+
+  ul
+    :list-style-type disc
+    :padding-left 1em
+
+    li
+      :padding-bottom 1em
+
+#description
+  :margin 10px
+
+#footer
+  :background = !dark_gray
+  :color white
+  :clear both
+  :padding 0.25em
+  :text-align center
+  :font-family verdana
+  :font-size 0.75em
+  :font-variant small-caps

@@ -1,0 +1,22 @@
+!!! XML
+!!!
+
+%html
+
+  %head
+    %title LeagueTool.com
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "jquery", "jquery-ui", "jrails", "application"
+
+  %body
+    #content
+      #header
+        %h1 LeagueTool.com
+        #status_bar= render :partial => "users/status_bar"
+
+      #messages= flash[:notice] || flash[:error]
+
+      = yield
+
+      #footer
+        &copy; 2009 Catamorphic Labs, LLC

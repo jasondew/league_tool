@@ -1,0 +1,23 @@
+bronze:
+  name: Bronze
+  league_limit: 1
+  player_limit: 7
+  price: nil
+
+silver:
+  name: Silver
+  league_limit: 1
+  player_limit: nil
+  price: 9.95
+
+gold:
+  name: Gold
+  league_limit: 5
+  player_limit: nil
+  price: 19.95
+
+platinum:
+  name: Platinum
+  league_limit: 10
+  player_limit: nil
+  price: 29.95
