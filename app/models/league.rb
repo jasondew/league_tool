@@ -1,16 +1,18 @@
 class League < ActiveRecord::Base
 
-  before_save :verify_plan
+  belongs_to :owner, :class_name => "User", :foreign_key => "user_id", :counter_cache => true
 
-  belongs_to :user
-
-  has_many :players, :class_name => "User"
+  has_many :memberships
+  has_many :players, :class_name => "User", :through => :memberships
   has_many :matches
+
+  before_save :verify_plan
 
   private
 
   def verify_plan
-    user.league_addable?
+    owner ||= User.find user_id
+    owner.leagues_count < owner.plan.league_limit
   end
 
 end

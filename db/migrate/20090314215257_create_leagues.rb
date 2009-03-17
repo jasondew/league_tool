@@ -8,6 +8,8 @@ class CreateLeagues < ActiveRecord::Migration
       t.datetime :registration_closed_at
 
       t.timestamps
+
+      t.integer :players_count, :default => 0
     end
   end
 

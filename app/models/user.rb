@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
   has_many :memberships
   has_many :leagues, :through => :memberships
+  has_many :owned_leagues, :class_name => "League"
   has_many :matches, :finder_sql => 'SELECT * FROM matches WHERE home_player_id = #{id} OR away_player_id = #{id}'
 
   def self.authenticate email, password
@@ -38,11 +39,6 @@ class User < ActiveRecord::Base
 
   def email= value
     write_attribute :email, (value ? value.downcase : nil)
-  end
-
-  def league_addable?
-    puts "cur = #{leagues.size} limit = #{plan.league_limit}"
-    leagues.size < plan.league_limit
   end
 
   protected

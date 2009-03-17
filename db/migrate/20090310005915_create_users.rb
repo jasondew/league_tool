@@ -11,6 +11,8 @@ class CreateUsers < ActiveRecord::Migration
 
       t.string :remember_token, :activation_code, :limit => 40
       t.datetime :remember_token_expires_at, :activated_at, :created_at, :updated_at, :deleted_at
+
+      t.integer :leagues_count, :default => 0
     end
 
     add_index :users, :email, :unique => true
