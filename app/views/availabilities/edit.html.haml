@@ -1,0 +1,32 @@
+%h2== My General Availability
+
+%p
+  Leave blank for none; more instructions and examples...
+
+- form_for user_availability_path(current_user) do |f|
+  %p
+    Mondays:
+    = f.text_field :monday_availability
+    = link_to_function "Add another availability"
+
+  %p
+    Tuesdays:
+    = f.text_field :tuesday_availability
+    = link_to_function "Add another availability"
+
+  %p
+    Wednesdays:
+    = f.text_field :wednesday_availability
+    = link_to_function "Add another availability"
+
+  %p
+    Thursdays:
+    = f.text_field :thursday_availability
+    = link_to_function "Add another availability"
+
+  %p
+    Fridays:
+    = f.text_field :friday_availability
+    = link_to_function "Add another availability"
+
+  = f.submit "Update"

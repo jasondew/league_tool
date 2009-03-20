@@ -18,6 +18,12 @@ class UserTest < ActiveSupport::TestCase
       league = @user.owned_leagues.build :name => "My League"
       assert_valid league
     end
+
+    should "know if they belong to any leagues" do
+      assert @user.leagueless?
+      @user.memberships.create :league_id => Factory(:league).id
+      assert !@user.leagueless?
+    end
   end
 
   context "with bronze plan" do

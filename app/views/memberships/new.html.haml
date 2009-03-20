@@ -1,0 +1,7 @@
+%h2== Joining #{@league.name}
+
+%p Are you sure?
+
+- form_for [current_user, @league, :membership] do |f|
+  = f.submit "Yes"
+  = link_to "Cancel", user_path(current_user)

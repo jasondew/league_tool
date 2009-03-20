@@ -5,8 +5,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :users do |user|
+    user.resource :availability
+
     user.resources :leagues do |league|
       league.resources :matches
+      league.resource :membership
     end
   end
 

@@ -1,4 +1,4 @@
 Factory.define :league do |f|
   f.name "My League"
-  f.association :user, :factory => :user
+  f.association :owner, :factory => :bronze_user
 end

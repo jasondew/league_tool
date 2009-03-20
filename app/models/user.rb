@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   has_many :leagues, :through => :memberships
   has_many :owned_leagues, :class_name => "League"
   has_many :matches, :finder_sql => 'SELECT * FROM matches WHERE home_player_id = #{id} OR away_player_id = #{id}'
+  has_many :availabilities
 
   def self.authenticate email, password
     return nil if email.blank? || password.blank?
@@ -39,6 +40,15 @@ class User < ActiveRecord::Base
 
   def email= value
     write_attribute :email, (value ? value.downcase : nil)
+  end
+
+  def leagueless?
+    memberships.empty?
+  end
+
+  def availability_on day
+    #FIXME implement
+    "None"
   end
 
   protected

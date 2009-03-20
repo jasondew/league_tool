@@ -1,6 +1,12 @@
 %h2== Player Dashboard for #{@user.name}
 
-#alerts= alerts_for @user
+= alerts_for @user
 
 - @leagues.each do |league|
   = link_to league.name, league
+
+%h3 My Availability
+
+= render :partial => "availability"
+
+%p= link_to "Edit my availability", edit_user_availability_path(current_user)

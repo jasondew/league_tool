@@ -1,0 +1,18 @@
+-# oh CSS gods, please forgive me for using a table
+
+%table
+  %thead
+    %tr
+      %td Monday
+      %td Tuesday
+      %td Wednesday
+      %td Thursday
+      %td Friday
+
+  %tbody
+    %tr
+      %td= current_user.availability_on :monday
+      %td= current_user.availability_on :tuesday
+      %td= current_user.availability_on :wednesday
+      %td= current_user.availability_on :thursday
+      %td= current_user.availability_on :friday

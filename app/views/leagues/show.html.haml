@@ -1,8 +1,17 @@
-#features
-  %ul
-    %li Calendar
-    %li Standings
-    %li Statistics
-    %li Schedule a match
-    %li Record match results
-    %li Change league
+-#FIXME this is fugly... fix
+
+%h2= @league.name
+
+- if current_user.leagues.include? @league
+  #features
+    %ul
+      %li Calendar
+      %li Standings
+      %li Statistics
+      %li Schedule a match
+      %li Record match results
+
+  %p= link_to "Change leagues", user_path(current_user)
+
+- else
+  %p= link_to "Join league", new_user_league_membership_path(current_user, @league)

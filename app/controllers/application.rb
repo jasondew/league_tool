@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
 
+  before_filter :login_required
+
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => '9d0d87088067762cdb501b83e0974849'
@@ -9,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def find_user
-    @user = User.find(params[:user_id]) if params[:user_id]
+  def find_league
+    @league = League.find(params[:league_id]) if params[:league_id]
   end
 end

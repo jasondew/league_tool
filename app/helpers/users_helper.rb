@@ -3,9 +3,9 @@ module UsersHelper
   def alerts_for user
     alerts = []
 
-    alerts << "You aren't part of a league. " + link_to("Join one now!", new_user_league_path(@user)) if user.leagues.empty?
+    (alerts << "You aren't part of a league. " + link_to("Join one now!", new_user_league_path(user))) if user.leagueless?
 
-    alerts.join "<br />"
+    content_tag(:div, alerts.join("<br />"), :id => "alerts") unless alerts.empty?
   end
   
   #

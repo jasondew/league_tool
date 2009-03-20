@@ -4,8 +4,7 @@ class UsersControllerTest < ActionController::TestCase
 
   context "show success" do
     setup do
-      user = Factory(:user)
-      @request.session[:current_user] = user.id
+      user = logged_in
       get :show, :id => user.id
     end
 
