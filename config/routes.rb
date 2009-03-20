@@ -5,7 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :users do |user|
-    user.resources :matches
+    user.resources :leagues do |league|
+      league.resources :matches
+    end
   end
 
   map.resources :leagues do |league|

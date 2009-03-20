@@ -1,4 +1,12 @@
 module UsersHelper
+
+  def alerts_for user
+    alerts = []
+
+    alerts << "You aren't part of a league. " + link_to("Join one now!", new_user_league_path(@user)) if user.leagues.empty?
+
+    alerts.join "<br />"
+  end
   
   #
   # Use this to wrap view elements that the user can't access.

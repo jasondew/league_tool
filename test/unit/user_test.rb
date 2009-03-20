@@ -56,6 +56,38 @@ class UserTest < ActiveSupport::TestCase
       assert_equal league_2.save, false
     end
 
+    should "only be able to add at least 10 users" do
+      league = @user.owned_leagues.create :name => "my league"
+
+      10.times do |i|
+        assert Membership.create(:league => league, :user => Factory(:user))
+      end
+    end
+
   end
 
+  context "with gold plan" do
+    setup do
+      @user = Factory(:gold_user)
+    end
+
+    should "only be able to create five leagues" do
+      5.times do |i|
+        league = @user.owned_leagues.build :name => "league #{i}"
+        assert league.save
+      end
+
+      sixth_league = @user.owned_leagues.build :name => "over the limit league"
+      assert !sixth_league.save
+    end
+
+    should "only be able to add at least 10 users" do
+      league = @user.owned_leagues.create :name => "my league"
+
+      10.times do
+        assert Membership.create(:league => league, :user => Factory(:user))
+      end
+    end
+
+  end
 end

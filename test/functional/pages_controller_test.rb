@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+
+  context "success" do
+    setup do
+      get :home
+    end
+
+    should_respond_with :success
   end
+
 end

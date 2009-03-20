@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    @matches = @user.matches
+    @leagues = @user.leagues
   end
  
   def create

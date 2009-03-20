@@ -1,10 +1,6 @@
-%h2 Player Dashboard
+%h2== Player Dashboard for #{@user.name}
 
-#features
-  %ul
-    %li Calendar
-    %li Standings
-    %li Statistics
-    %li Schedule a match
-    %li Record match results
-    %li Change league
+#alerts= alerts_for @user
+
+- @leagues.each do |league|
+  = link_to league.name, league

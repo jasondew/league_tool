@@ -10,6 +10,6 @@ db/schema.rb
 *patch
 .autotest
 public/stylesheets/application.css
-.swp
+*.swp
 *~
 .DS_Store
