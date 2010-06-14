@@ -6,6 +6,16 @@ class AvailabilitiesController < ApplicationController
   end
 
   def update
+    @availabilities = current_user.availabilities
+
+    @availabilities.clear
+
+    params[:availabilities].split("|").each do |availability|
+      day, time = availability.split "@"
+      @availabilities.create :day => day, :time => time
+    end
+
+    redirect_to current_user
   end
 
 end

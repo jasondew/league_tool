@@ -47,8 +47,13 @@ class User < ActiveRecord::Base
   end
 
   def availability_on day
-    #FIXME implement
-    "None"
+    times = availabilities.select {|availability| availability.day == Availability::DAYS.index(day) }.map {|availability| availability.time }
+
+    if times.empty?
+      "None"
+    else
+      times.join ", "
+    end
   end
 
   protected

@@ -2,8 +2,8 @@ class CreateAvailabilities < ActiveRecord::Migration
   def self.up
     create_table :availabilities do |t|
       t.belongs_to :user
-      t.string :day
-      t.time :starts_at, :ends_at
+      t.integer :day
+      t.string :time
       t.timestamps
     end
   end

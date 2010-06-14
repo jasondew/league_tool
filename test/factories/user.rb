@@ -1,9 +1,11 @@
-Factory.define :user do |u|
-  u.first_name "John"
-  u.last_name  "Smith"
-  u.sequence(:email) {|n| "jason.dew+user#{n}@gmail.com" }
-  u.password   "password"
-  u.password_confirmation "password"
+Factory.define :user do |f|
+  f.first_name "John"
+  f.last_name "Smith"
+  f.sequence(:email) {|n| "jason.dew+user#{n}@gmail.com" }
+  f.password "password"
+  f.password_confirmation "password"
+
+  f.availabilities {|u| [Factory.build(:availability), Factory.build(:availability), Factory.build(:availability), Factory.build(:availability), Factory.build(:availability)] }
 end
 
 Factory.define :active_user, :parent => :user do |u|

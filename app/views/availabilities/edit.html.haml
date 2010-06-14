@@ -1,32 +1,28 @@
 %h2== My General Availability
 
 %p
-  Leave blank for none; more instructions and examples...
+  instructions
 
-- form_for user_availability_path(current_user) do |f|
-  %p
-    Mondays:
-    = f.text_field :monday_availability
-    = link_to_function "Add another availability"
+- form_for :availability, :url => user_availability_path(current_user), :html => {:method => :put, :id => "availability_form"} do |f|
 
-  %p
-    Tuesdays:
-    = f.text_field :tuesday_availability
-    = link_to_function "Add another availability"
+  %table#availability_picker
+    %thead
+      %tr
+        %th{:colspan => 2} &nbsp;
+        - Availability::DAYS.each do |day|
+          %th= day.to_s.capitalize
 
-  %p
-    Wednesdays:
-    = f.text_field :wednesday_availability
-    = link_to_function "Add another availability"
+    %tbody
+      - Availability.time_intervals(6,21).each do |(military_hour, hour_text)|
+        %tr
+          %th.hour{:rowspan => 2}= hour_text
+          %th.minute :00
+          - Availability::DAYS.each_with_index do |day, index|
+            %td{:time_id => "#{index}@#{military_hour}00"}
 
-  %p
-    Thursdays:
-    = f.text_field :thursday_availability
-    = link_to_function "Add another availability"
+        %tr
+          %th.minute :30
+          - Availability::DAYS.each_with_index do |day, index|
+            %td{:time_id => "#{index}@#{military_hour}30"}
 
-  %p
-    Fridays:
-    = f.text_field :friday_availability
-    = link_to_function "Add another availability"
-
-  = f.submit "Update"
+  = f.submit
